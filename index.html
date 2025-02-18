@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>News Insight</title>
+</head>
+<body>
+    <h1>News Insight</h1>
+    <h2>Sentiment Distribution</h2>
+    <!-- Embed the graph as Base64 -->
+    <img src="data:image/png;base64,{{ plot_data }}" 
+         alt="Sentiment Distribution" 
+         style="max-width: 100%; height: auto;">
+
+    <h2>Latest Articles</h2>
+    <ul>
+    {% for article, analysis in zip(articles, analyses) %}
+        <li>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description }}</p>
+            <p><strong>Sentiment Polarity:</strong> {{ analysis.polarity }}</p>
+            <p><strong>Keywords:</strong> {{ analysis.keywords }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
